@@ -1,0 +1,17 @@
+.one{
+    display: none;
+    border: none;
+        margin-bottom: 0;
+        padding: 25px 0;
+        position: fixed;
+            right: 0;
+            left: 0;
+            z-index: 1030
+}
+
+.two{
+    padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto
+}
