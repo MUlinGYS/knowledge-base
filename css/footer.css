@@ -1,18 +1,58 @@
-.one{
-    display: none;
-    border: none;
-        margin-bottom: 0;
-        padding: 25px 0;
-        position: fixed;
-            right: 0;
-            left: 0;
-            z-index: 1030
+body {
+    margin: 0;
 }
 
+.color-change-3x {
+    width: 100vw;
+    height: 100vh;
+    -webkit-animation: color-change-3x 4s linear infinite alternate both;
+    animation: color-change-3x 4s linear infinite alternate both;
+}
 
-.two{
-    padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto
+/* 渐变效果 */
+@-webkit-keyframes color-change-3x {
+    0% {
+        background: #19dcea;
+    }
+
+    50% {
+        background: #b22cff;
+    }
+
+    100% {
+        background: #ea2222;
+    }
+}
+
+@keyframes color-change-3x {
+    0% {
+        background: #19dcea;
+    }
+
+    50% {
+        background: #b22cff;
+    }
+
+    100% {
+        background: #ea2222;
+    }
+}
+
+/* 为 about 的 section 添加一个简单的淡入动画 */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#about {
+    animation: fadeIn 2s ease-in-out;
+}
+
+*::-webkit-scrollbar {
+    display: none;
 }
