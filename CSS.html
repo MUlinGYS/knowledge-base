@@ -84,7 +84,7 @@
 						'<div class="card-body">' +
 						'<h4 class="card-title">' + essay.essaysTitle + '</h4>' +
 						'<p class="card-text">' + essay.detail + '</p>' +
-						'<a href="#" class="btn btn-primary">See Profile</a>' +
+						'<a href="#" class="btn btn-primary">查看文章</a>' +
 						'</div></div>';
 
 					container.innerHTML += card;
@@ -99,11 +99,22 @@
 				}
 			},
 			error: function () {
-				console.log('Send Request Fail..');
+				var container = document.getElementById('card-container-one');
+				// 当请求失败时，清除所有的容器
+				document.querySelectorAll('.container').forEach(function (container) {
+					container.innerHTML = '';
+				});
+				var errorCard = '<div class="card" style="width: 300px;margin:0 10px;">' +
+					'<div class="card-body">' +
+					'<h4 class="card-title">网络错误</h4>' +
+					'<p class="card-text">请检查你的网络连接并刷新页面。</p>' +
+					'</div></div>';
+				container.innerHTML = errorCard;
 			}
 		});
 	}
 </script>
+
 <style>
 	/* 占位作用 */
 	.placeholder {
