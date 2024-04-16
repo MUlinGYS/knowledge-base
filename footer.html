@@ -125,14 +125,14 @@
 
         // 获取子网页高度赋值给iframe高度
         window.adjustIframeHeight = function (height) {
-            var iframe = document.getElementById("myframe");
-            if (iframe && height) {
-                iframe.style.height = height + 20 + 'px';
-            }
+            setTimeout(function () {
+                var iframe = document.getElementById("myframe");
+                if (iframe && height) {
+                    iframe.style.height = height + 20 + 'px';
+                }
+            }, 1000); // 延迟1秒执行，你可以增加或者减少这个时间以满足你的需求
 
-        };
-        // 测试性使用
-        iframeflushed()
+        }
     }
 
     // 同域情况下，访问这个 < iframe > 的 contentWindow 或 contentDocument，获取内部内容高度动态赋值给iframe
@@ -146,14 +146,14 @@
 
     // iframe局部刷新 ----避免iframe下的动态卡片生成的旧容器残留
     // window.addEventListener('resize', iframeflushed);
-    function iframeflushed() {
-        var iframe = document.getElementById("myframe");
-        // 保存当前的 src
-        var currentSrc = iframe.src;
-        // 先保存src，之后再赋值回来，触发 iframe 的 reload
-        iframe.src = '';
-        iframe.src = currentSrc;
-    }
+    // function iframeflushed() {
+    //     var iframe = document.getElementById("myframe");
+    //     // 保存当前的 src
+    //     var currentSrc = iframe.src;
+    //     // 先保存src，之后再赋值回来，触发 iframe 的 reload
+    //     iframe.src = '';
+    //     iframe.src = currentSrc;
+    // }
 </script>
 
 <style>
