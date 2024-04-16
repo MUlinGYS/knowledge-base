@@ -3,10 +3,12 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>typescript笔记</title>
+	<title>CSS笔记</title>
 	<link rel="stylesheet" href="css/general.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+	<style>
+	</style>
 </head>
 
 <body>
@@ -17,7 +19,7 @@
 			<div class="t3">JavaScript的超集</div>
 		</div>
 	</div>
-	<div class="content">
+	<div class="content" id="content">
 		<!-- 卡片将在这里插入 -->
 	</div>
 
@@ -38,6 +40,7 @@
 		// 动态的分配卡片的数量
 		// 每当窗口的大小改变时，就会触发 resize 事件，然后执行 adjustCardDisplay 函数，重新调整卡片的布局。
 		window.addEventListener('resize', adjustCardDisplay);
+		//逻辑上考虑网卡的原因不应该把重新生成的方法去依赖接口的数据
 	});
 	// 调整卡片显示以适应窗口大小
 	function adjustCardDisplay() {
@@ -82,9 +85,15 @@
 						'<a href="#" class="btn btn-primary">查看文章</a>' +
 						'</div></div>';
 
+					// 为提高丝滑度，auto改为125vh，插入卡片时再auto
+					var content = document.getElementById('content');
+					content.style.height = 'auto';
+
+					// 插入卡片
 					container.innerHTML += card;
 				});
 
+				//占位操作
 				var remainingCards = cardsPerRow - (result.data.essays.length % cardsPerRow);
 				if (remainingCards < cardsPerRow) {
 					for (var i = 0; i < remainingCards; i++) {
