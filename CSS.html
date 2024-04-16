@@ -12,27 +12,16 @@
 </head>
 
 <body>
+
 	<div class="head fix" style="background-color: #208C5B;">
 		<div class="tt">
 			<div class="t2">CSS</div>
 			<div class="t3">CSS让你创建好看的网页</div>
 		</div>
 	</div>
-	<div class="content">
-		<!-- <div class="box-main" style="margin: 20px 0;"> -->
-		<div style="margin: 20px 0;">
-			<div class="container" id="card-container-one"
-				style="display: flex;justify-content: space-evenly;width: 100%;max-width: 100%;">
-				<!-- 卡片将在这里插入 -->
-			</div>
-		</div>
-		<div style="margin: 20px 0;">
-			<div class="container" id="card-container-two"
-				style="display: flex;justify-content: space-evenly;width: 100%;max-width: 100%;">
-				<!-- 卡片将在这里插入 -->
-			</div>
-		</div>
 
+	<div class="content">
+		<!-- 卡片将在这里插入 -->
 	</div>
 
 </body>
@@ -41,14 +30,25 @@
 <script type="text/javascript" src="./js/jquery.js"></script>
 <script>
 
-	window.onload = function () {
-		adjustCardDisplay();
-		console.log('方法调用');
-		window.addEventListener('resize', adjustCardDisplay);
-	};
+	// window.onload = function () {
+	// 	adjustCardDisplay();
+	// 	console.log('方法调用');
+	// 	// window.addEventListener('resize', adjustCardDisplay);
+	// };
 
+	document.addEventListener("DOMContentLoaded", function () {
+		adjustCardDisplay();
+		// 动态的分配卡片的数量
+		// 每当窗口的大小改变时，就会触发 resize 事件，然后执行 adjustCardDisplay 函数，重新调整卡片的布局。
+		window.addEventListener('resize', adjustCardDisplay);
+	});
 	// 调整卡片显示以适应窗口大小
 	function adjustCardDisplay() {
+		// 清除所有现有的容器，避免窗口变化时有旧容器残留
+		document.querySelectorAll('.container').forEach(function (el) {
+			el.remove();
+		});
+
 		var windowWidth = window.innerWidth;
 		var cardWidth = 250; // 卡片宽度
 		var margin = 20; // 卡片间的间距
@@ -61,12 +61,10 @@
 			success: function (result) {
 				var rowIndex = 0;
 				var container;
-				console.log('方法调用');
 				result.data.essays.forEach(function (essay, index) {
 					if (index % cardsPerRow === 0) {
 						rowIndex++;
 						container = document.getElementById('card-container-' + rowIndex);
-
 						if (!container) {
 							container = document.createElement('div');
 							container.id = 'card-container-' + rowIndex;
@@ -96,7 +94,12 @@
 						var placeholder = '<div class="card placeholder" style="width: 300px;margin:0 10px;"></div>';
 						container.innerHTML += placeholder;
 					}
+
 				}
+
+				parent.adjustIframeHeight(document.body.scrollHeight);
+				console.log(document.body.scrollHeight);
+
 			},
 			error: function () {
 				var container = document.getElementById('card-container-one');
@@ -113,6 +116,7 @@
 			}
 		});
 	}
+
 </script>
 
 <style>
