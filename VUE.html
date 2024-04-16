@@ -82,7 +82,7 @@
 						'<div class="card-body">' +
 						'<h4 class="card-title">' + essay.essaysTitle + '</h4>' +
 						'<p class="card-text">' + essay.detail + '</p>' +
-						'<a href="#" class="btn btn-primary">查看文章</a>' +
+						'<a class="btn btn-primary" style="width: 100px;">查看文章</a>' +
 						'</div></div>';
 
 					// 为提高丝滑度，auto改为125vh，插入卡片时再auto
@@ -109,18 +109,67 @@
 					console.log(document.body.scrollHeight);
 				}, 100);
 
+				// 预先声明一个变量用于存储当前打开的卡片和按钮
+				var currentOpenCard = null;
+				var currentOpenButton = null;
+
+				// 获取所有的查看文章按钮
+				var buttons = document.querySelectorAll('.btn.btn-primary');
+
+				buttons.forEach(function (button) {
+					button.addEventListener('click', function () {
+						var card = this.closest('.card');
+						// 找到卡片中的所有图片
+						var images = card.querySelectorAll('img');
+						var text = card.querySelector('.card-text');
+
+						if (card !== currentOpenCard) {
+							// 如果该卡片未打开，则打开它并隐藏所有图片
+							card.style.width = '1000px';
+							this.textContent = '关闭文章';
+							images.forEach(function (image) {
+								image.style.display = 'none'; // 隐藏图片
+								text.classList.add('showFullText'); // 添加类来显示全文
+							});
+							if (currentOpenCard && currentOpenButton) {
+								// 如果另一篇文章打开了，关闭它并显示所有图片
+								currentOpenCard.style.width = '300px';
+								currentOpenButton.textContent = '查看文章';
+								var previousImages = currentOpenCard.querySelectorAll('img');
+								previousImages.forEach(function (image) {
+									image.style.display = ''; // 显示图片
+									text.classList.remove('showFullText'); // 移除类来显示省略号
+								});
+							}
+							// 更新当前打开的卡片和按钮
+							currentOpenCard = card;
+							currentOpenButton = this;
+						} else {
+							// 如果该卡片已经打开，则关闭并显示所有图片
+							card.style.width = '300px';
+							this.textContent = '查看文章';
+							images.forEach(function (image) {
+								image.style.display = ''; // 显示图片
+								text.classList.remove('showFullText'); // 移除类来显示省略号
+							});
+							// 清空当前打开的卡片和按钮
+							currentOpenCard = null;
+							currentOpenButton = null;
+						}
+					});
+				});
 
 			},
 			error: function () {
-				var container = document.getElementById('card-container-one');
+				var container = document.getElementById('content');
 				// 当请求失败时，清除所有的容器
 				document.querySelectorAll('.container').forEach(function (container) {
 					container.innerHTML = '';
 				});
-				var errorCard = '<div class="card" style="width: 300px;margin:0 10px;">' +
+				var errorCard = '<div class="card" style="width: 300px;margin-top:20px;">' +
 					'<div class="card-body">' +
 					'<h4 class="card-title">网络错误</h4>' +
-					'<p class="card-text">请检查你的网络连接并刷新页面。</p>' +
+					'<p class="card-text">请检查你的网络连接并刷新页面&接口未上线</p>' +
 					'</div></div>';
 				container.innerHTML = errorCard;
 
@@ -136,6 +185,33 @@
 	/* 占位作用 */
 	.placeholder {
 		visibility: hidden;
+	}
+
+	/* transition过渡效果，限高 */
+	.card {
+		transition: width 0.3s ease;
+		height: 480px;
+		min-height: 480px;
+	}
+
+	.card-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.card-text {
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-line-clamp: 5;
+		/* 显示行数 */
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
+	}
+
+	.card-text.showFullText {
+		-webkit-line-clamp: none;
+		text-overflow: clip;
 	}
 </style>
 
