@@ -113,6 +113,9 @@
 					'<p class="card-text">请检查你的网络连接并刷新页面。</p>' +
 					'</div></div>';
 				container.innerHTML = errorCard;
+
+				parent.adjustIframeHeight(document.body.scrollHeight);
+				console.log(document.body.scrollHeight);
 			}
 		});
 	}
