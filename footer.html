@@ -16,7 +16,7 @@
     可以在 p外面包裹一层容器，并触发这个容器生成一个 BFC，那么两个 p 就不属于同一个 BFC -->
 
     <!-- section表示文档或应用的一个部分。所谓“部分”，这里是指按照主题分组的内容区域，通常会带有标题。 -->
-    <section class="navbar custom-navbar navbar-fixed-top" style="height: 12vh;">
+    <section class="navbar custom-navbar navbar-fixed-top" style="height: 12vh;" id="navbar-top">
         <div class="container">
             <div class="navbar-header">
                 <!-- lOGO -->
@@ -92,7 +92,6 @@
 <script src="/js/jquery.js"></script>
 <script src="/js/custom.js"></script>
 <script>
-
     //  jQuery 中的 animate 函数
     $(document).ready(function () {
         // 为 smoothScroll 的元素添加一个点击事件
@@ -101,9 +100,16 @@
             if (this.hash !== "") {
                 event.preventDefault();
                 var hash = this.hash;
+
+                // 获取导航栏的高度
+                var navbarHeight = $('#navbar-top').outerHeight();
+
+                // 获取目标元素的顶部位置并减去导航栏的高度
+                var targetOffset = $(hash).offset().top - navbarHeight;
+
                 $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 500, function () {  // 800 指的是滚动动画的时长（单位为毫秒），可以根据需要调整。
+                    scrollTop: targetOffset
+                }, 500, function () { // 500 指的是滚动动画的时长（单位为毫秒），可以根据需要调整。
                     window.location.hash = hash;
                 });
             }
@@ -115,10 +121,13 @@
         var iframe = document.querySelector("#about iframe");
         iframe.src = notePath;
 
+        // 获取导航栏的高度
+        var navbarHeight = $('#navbar-top').outerHeight();
+        // 获取目标元素的顶部位置并减去导航栏的高度
+        var targetOffset = $('#about').offset().top - navbarHeight;
         // 添加animate滚动
         $('html, body').animate({
-            scrollTop: $('#about').offset().top
-            // 1100是滚动时间   
+            scrollTop: targetOffset
         }, 1100, function () {
             window.location.hash = '#about';
         });
@@ -130,7 +139,7 @@
                 if (iframe && height) {
                     iframe.style.height = height + 20 + 'px';
                 }
-            }, 700); // 延迟0.1秒执行，因为在部署后没有获取完全的值，延迟0.1秒得到正确的值
+            }, 700); // 延迟0.7秒执行，因为在部署后没有获取完全的值，延迟0.7秒得到正确的值
 
         }
     }
@@ -140,9 +149,9 @@
         var iframe = document.getElementById("myframe");
         iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 20 + 'px';
     }
-    myframe.onload = function () {
-        this.style.height = this.contentWindow.document.body.scrollHeight + 20 + 'px';
-    }
+    // myframe.onload = function () {
+    //     this.style.height = this.contentWindow.document.body.scrollHeight + 20 + 'px';
+    // }
 
     // iframe局部刷新 ----避免iframe下的动态卡片生成的旧容器残留
     // window.addEventListener('resize', iframeflushed);

@@ -34,6 +34,7 @@
 	// 	// window.addEventListener('resize', adjustCardDisplay);
 	// };
 
+	// 初始化文档之后马上调用
 	document.addEventListener("DOMContentLoaded", function () {
 		adjustCardDisplay();
 		// 动态的分配卡片的数量
@@ -101,9 +102,13 @@
 					}
 
 				}
+				// console.log(document.body.scrollHeight);
+				// 确保高度的正确
+				setTimeout(function () {
+					parent.adjustIframeHeight(document.body.scrollHeight);
+					console.log(document.body.scrollHeight);
+				}, 100);
 
-				parent.adjustIframeHeight(document.body.scrollHeight);
-				console.log(document.body.scrollHeight);
 
 			},
 			error: function () {
