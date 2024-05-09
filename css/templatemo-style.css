@@ -519,7 +519,7 @@ section {
 }
 
 #blog-header {
-    background: url('../img/blog-header-bg.jpg') no-repeat center center;
+    background:  no-repeat center center;
     background-size: cover;
     display: -webkit-box;
     display: -webkit-flex;

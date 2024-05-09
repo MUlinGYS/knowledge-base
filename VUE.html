@@ -161,20 +161,230 @@
 
 			},
 			error: function () {
-				var container = document.getElementById('content');
-				// 当请求失败时，清除所有的容器
-				document.querySelectorAll('.container').forEach(function (container) {
-					container.innerHTML = '';
-				});
-				var errorCard = '<div class="card" style="width: 300px;margin-top:20px;">' +
-					'<div class="card-body">' +
-					'<h4 class="card-title">网络错误</h4>' +
-					'<p class="card-text">请检查你的网络连接并刷新页面&接口未上线</p>' +
-					'</div></div>';
-				container.innerHTML = errorCard;
+				// var container = document.getElementById('content');
+				// // 当请求失败时，清除所有的容器
+				// document.querySelectorAll('.container').forEach(function (container) {
+				// 	container.innerHTML = '';
+				// });
+				// var errorCard = '<div class="card" style="width: 300px;margin-top:20px;">' +
+				// 	'<div class="card-body">' +
+				// 	'<h4 class="card-title">网络错误</h4>' +
+				// 	'<p class="card-text">请检查你的网络连接并刷新页面&接口未上线</p>' +
+				// 	'</div></div>';
+				// container.innerHTML = errorCard;
 
-				parent.adjustIframeHeight(document.body.scrollHeight);
-				console.log(document.body.scrollHeight);
+				// parent.adjustIframeHeight(document.body.scrollHeight);
+				// console.log(document.body.scrollHeight);
+
+				alert("接口未上线，正在提取离线数据...");
+
+				var result = {
+					"data": {
+						"essays": [
+							{
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							},
+							{
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							}
+							, {
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							}
+							, {
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							}
+							, {
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							}
+							, {
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							}
+							, {
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							}
+							, {
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							}
+							, {
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							}
+							, {
+								"essaysTitle": "这是一篇测试内容",
+								"detail": "测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容",
+								"remark": "无",
+								"author": "陈凯",
+								"time": "2020-05-10 10:00:00",
+								"like": 0,
+								"comment": 0,
+								"view": 0
+							}
+						]
+					}
+				};
+
+				var rowIndex = 0;
+				var container;
+				result.data.essays.forEach(function (essay, index) {
+					if (index % cardsPerRow === 0) {
+						rowIndex++;
+						container = document.getElementById('card-container-' + rowIndex);
+						if (!container) {
+							container = document.createElement('div');
+							container.id = 'card-container-' + rowIndex;
+							container.className = 'container';
+							container.style = 'display: flex;justify-content: space-evenly;width: 100%;max-width: 100%;margin: 20px 0;';
+							document.body.appendChild(container);
+						}
+
+						// 清除容器中的现有内容
+						container.innerHTML = '';
+					}
+
+					var card = '<div class="card" style="width: 300px;margin:0 10px;">' +
+						'<img class="card-img-top" src="./img/login.gif" alt="Card image">' +
+						'<div class="card-body">' +
+						'<h4 class="card-title">' + essay.essaysTitle + '</h4>' +
+						'<p class="card-text">' + essay.detail + '</p>' +
+						'<a class="btn btn-primary" style="width: 100px;">查看文章</a>' +
+						'</div></div>';
+
+					// 为提高丝滑度，auto改为125vh，插入卡片时再auto
+					var content = document.getElementById('content');
+					content.style.height = 'auto';
+
+					// 插入卡片
+					container.innerHTML += card;
+				});
+
+				//占位操作
+				var remainingCards = cardsPerRow - (result.data.essays.length % cardsPerRow);
+				if (remainingCards < cardsPerRow) {
+					for (var i = 0; i < remainingCards; i++) {
+						var placeholder = '<div class="card placeholder" style="width: 300px;margin:0 10px;"></div>';
+						container.innerHTML += placeholder;
+					}
+
+				}
+				// console.log(document.body.scrollHeight);
+				// 确保高度的正确
+				setTimeout(function () {
+					parent.adjustIframeHeight(document.body.scrollHeight);
+					console.log(document.body.scrollHeight);
+				}, 100);
+
+				// 预先声明一个变量用于存储当前打开的卡片和按钮
+				var currentOpenCard = null;
+				var currentOpenButton = null;
+
+				// 获取所有的查看文章按钮
+				var buttons = document.querySelectorAll('.btn.btn-primary');
+
+				buttons.forEach(function (button) {
+					button.addEventListener('click', function () {
+						var card = this.closest('.card');
+						// 找到卡片中的所有图片
+						var images = card.querySelectorAll('img');
+						var text = card.querySelector('.card-text');
+
+						if (card !== currentOpenCard) {
+							// 如果该卡片未打开，则打开它并隐藏所有图片
+							card.style.width = '1000px';
+							this.textContent = '关闭文章';
+							images.forEach(function (image) {
+								image.style.display = 'none'; // 隐藏图片
+								text.classList.add('showFullText'); // 添加类来显示全文
+							});
+							if (currentOpenCard && currentOpenButton) {
+								// 如果另一篇文章打开了，关闭它并显示所有图片
+								currentOpenCard.style.width = '300px';
+								currentOpenButton.textContent = '查看文章';
+								var previousImages = currentOpenCard.querySelectorAll('img');
+								previousImages.forEach(function (image) {
+									image.style.display = ''; // 显示图片
+									text.classList.remove('showFullText'); // 移除类来显示省略号
+								});
+							}
+							// 更新当前打开的卡片和按钮
+							currentOpenCard = card;
+							currentOpenButton = this;
+						} else {
+							// 如果该卡片已经打开，则关闭并显示所有图片
+							card.style.width = '300px';
+							this.textContent = '查看文章';
+							images.forEach(function (image) {
+								image.style.display = ''; // 显示图片
+								text.classList.remove('showFullText'); // 移除类来显示省略号
+							});
+							// 清空当前打开的卡片和按钮
+							currentOpenCard = null;
+							currentOpenButton = null;
+						}
+					});
+				});
+
 			}
 		});
 	}
